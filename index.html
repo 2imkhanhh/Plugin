@@ -10,7 +10,6 @@
 
 <body>
     <div class="panel-container">
-        <!-- Header -->
         <header class="header">
             <div class="header-top">
                 <div class="header-title">
@@ -36,7 +35,6 @@
             <div class="header-divider"></div>
         </header>
 
-        <!-- Main Tabs -->
         <div class="main-tabs">
             <div class="main-tab active" onclick="switchMainTab('mau-rap', this)">
                 <span class="tab-content">
@@ -52,47 +50,14 @@
             </div>
         </div>
 
-        <!-- Main View: Mẫu rập -->
         <div id="main-view-mau-rap" class="main-view active">
-            <!-- Sub Tabs -->
             <div class="sub-tabs">
-            <button class="sub-tab active" onclick="switchTab('manh-roi', this)">Mảnh rời</button>
-            <button class="sub-tab" onclick="switchTab('theo-bo', this)">Theo bộ / nhóm</button>
-            <button class="sub-tab" onclick="switchTab('nhay-size', this)">Nhảy size</button>
-        </div>
-
-        <!-- Views -->
-        <div id="view-manh-roi" class="tab-view active">
-            <!-- Actions -->
-            <div class="actions">
-                <button class="btn btn-primary">
-                    <img src="./assets/check.svg" alt="Check" width="16" height="16" />
-                    Lấy mẫu rập đang chọn
-                </button>
-                <button class="btn btn-danger">
-                    <img src="./assets/delete.svg" alt="Delete" width="16" height="16" />
-                    Xóa tất cả các mẫu
-                </button>
+                <button class="sub-tab active" onclick="switchTab('manh-roi', this)">Mảnh rời</button>
+                <button class="sub-tab" onclick="switchTab('theo-bo', this)">Theo bộ / nhóm</button>
+                <button class="sub-tab" onclick="switchTab('nhay-size', this)">Nhảy size</button>
             </div>
-        </div>
 
-        <div id="view-theo-bo" class="tab-view" style="display: none;">
-            <div class="size-management">
-                <div class="size-header">
-                    <img src="./assets/manage.svg" alt="Manage" width="16" height="16" />
-                    Quản lý size
-                </div>
-                <div class="size-input-row">
-                    <input type="text" class="size-input" placeholder="Nhập size mới, VD: XL" spellcheck="false">
-                    <button class="btn-add">Thêm</button>
-                </div>
-                <div class="size-tags-row">
-                    <div class="size-tag active">XXL</div>
-                    <div class="size-tag">4XL</div>
-                    <div class="size-tag">4XL</div>
-                    <div class="size-tag">4XL</div>
-                    <a href="#" class="delete-size-link">Xóa size</a>
-                </div>
+            <div id="view-manh-roi" class="tab-view active">
                 <div class="actions">
                     <button class="btn btn-primary">
                         <img src="./assets/check.svg" alt="Check" width="16" height="16" />
@@ -104,202 +69,231 @@
                     </button>
                 </div>
             </div>
-        </div>
 
-        <div id="view-nhay-size" class="tab-view" style="display: none;">
-            <div class="size-management nhay-size-wrapper">
-                <div class="size-header">
-                    <img src="./assets/manage.svg" alt="Manage" width="16" height="16" />
-                    Dãy size cần tạo
-                </div>
-
-                <div class="input-group">
-                    <input type="text" class="size-input" value="M,L,XL,2XL,3XL" spellcheck="false">
-                    <div class="input-helper">Nhập dãy size; danh sách Size thiết kế chuẩn được tạo tự động.</div>
-                </div>
-
-                <div class="input-group">
-                    <div class="custom-select-wrapper">
-                        <select class="size-input">
-                            <option>M</option>
-                        </select>
-                        <svg class="select-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
+            <div id="view-theo-bo" class="tab-view" style="display: none;">
+                <div class="size-management">
+                    <div class="size-header">
+                        <img src="./assets/manage.svg" alt="Manage" width="16" height="16" />
+                        Quản lý size
                     </div>
-                    <div class="input-helper">Nhập dãy size; danh sách Size thiết kế chuẩn được tạo tự động.</div>
-                </div>
-
-                <div class="actions">
-                    <button class="btn btn-primary">
-                        <img src="./assets/check.svg" alt="Check" width="16" height="16" />
-                        Lấy mẫu rập đang chọn
-                    </button>
-                    <button class="btn btn-danger">
-                        <img src="./assets/delete.svg" alt="Delete" width="16" height="16" />
-                        Xóa nguồn nhảy size
-                    </button>
-                </div>
-
-                <div class="table-container nhay-size-table">
-                    <div class="table-header">
-                        <div class="col-thumb">Hình</div>
-                        <div class="col-name">Tên mẫu</div>
-                        <div class="col-anchor">Điểm neo</div>
-                        <div class="col-action">Xóa</div>
+                    <div class="size-input-row">
+                        <input type="text" class="size-input" placeholder="Nhập size mới, VD: XL" spellcheck="false">
+                        <button class="btn-add">Thêm</button>
                     </div>
-                    <div class="table-body">
-                        <!-- Row 1 -->
-                        <div class="table-row">
-                            <div class="col-thumb">
-                                <div class="thumb-box"></div>
-                            </div>
-                            <div class="col-name"><input type="text" placeholder="Tên chi tiết" spellcheck="false">
-                            </div>
-                            <div class="col-anchor"><button class="anchor-btn" onclick="openModal('diem-neo-modal')">Giữa • Giữa</button></div>
-                            <div class="col-action">
-                                <button class="btn-icon"><img src="./assets/delete.svg" alt="Delete" width="14"
-                                        height="14" /></button>
-                            </div>
-                        </div>
-                        <!-- Row 2 -->
-                        <div class="table-row">
-                            <div class="col-thumb">
-                                <div class="thumb-box"></div>
-                            </div>
-                            <div class="col-name"><input type="text" placeholder="Tên chi tiết" spellcheck="false">
-                            </div>
-                            <div class="col-anchor"><button class="anchor-btn" onclick="openModal('diem-neo-modal')">Giữa • Giữa</button></div>
-                            <div class="col-action">
-                                <button class="btn-icon"><img src="./assets/delete.svg" alt="Delete" width="14"
-                                        height="14" /></button>
-                            </div>
-                        </div>
-                        <!-- Row 3 -->
-                        <div class="table-row">
-                            <div class="col-thumb">
-                                <div class="thumb-box"></div>
-                            </div>
-                            <div class="col-name"><input type="text" placeholder="Tên chi tiết" spellcheck="false">
-                            </div>
-                            <div class="col-anchor"><button class="anchor-btn" onclick="openModal('diem-neo-modal')">Giữa • Giữa</button></div>
-                            <div class="col-action">
-                                <button class="btn-icon"><img src="./assets/delete.svg" alt="Delete" width="14"
-                                        height="14" /></button>
-                            </div>
-                        </div>
-                        <!-- Row 4 -->
-                        <div class="table-row">
-                            <div class="col-thumb">
-                                <div class="thumb-box"></div>
-                            </div>
-                            <div class="col-name"><input type="text" placeholder="Tên chi tiết" spellcheck="false">
-                            </div>
-                            <div class="col-anchor"><button class="anchor-btn" onclick="openModal('diem-neo-modal')">Giữa • Giữa</button></div>
-                            <div class="col-action">
-                                <button class="btn-icon"><img src="./assets/delete.svg" alt="Delete" width="14"
-                                        height="14" /></button>
-                            </div>
-                        </div>
+                    <div class="size-tags-row">
+                        <div class="size-tag active">XXL</div>
+                        <div class="size-tag">4XL</div>
+                        <div class="size-tag">4XL</div>
+                        <div class="size-tag">4XL</div>
+                        <a href="#" class="delete-size-link">Xóa size</a>
                     </div>
-                </div>
-
-                <div class="bottom-actions">
-                    <button class="btn btn-secondary">
-                        <img src="./assets/file.svg" alt="Folder" width="16" height="16" />
-                        Kiểm tra nhận size từ DXF
-                    </button>
-                    <button class="btn btn-primary">
-                        <img src="./assets/check.svg" alt="Check" width="16" height="16" />
-                        Áp dụng kiểm tra vào Illustrator
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Table container -->
-        <div class="table-container" id="shared-table">
-            <div class="table-header">
-                <div class="col-thumb">Hình</div>
-                <div class="col-name">Tên mẫu</div>
-                <div class="col-width">Rộng</div>
-                <div class="col-height">Cao</div>
-                <div class="col-action">Xóa</div>
-            </div>
-            <div class="table-body">
-                <!-- Row 1 -->
-                <div class="table-row">
-                    <div class="col-thumb">
-                        <div class="thumb-box"></div>
-                    </div>
-                    <div class="col-name">
-                        <input type="text" placeholder="Tên chi tiết" spellcheck="false">
-                    </div>
-                    <div class="col-width">40.2</div>
-                    <div class="col-height">24.7</div>
-                    <div class="col-action">
-                        <button class="btn-icon">
-                            <img src="./assets/delete.svg" alt="Delete" width="14" height="14" />
+                    <div class="actions">
+                        <button class="btn btn-primary">
+                            <img src="./assets/check.svg" alt="Check" width="16" height="16" />
+                            Lấy mẫu rập đang chọn
                         </button>
-                    </div>
-                </div>
-                <!-- Row 2 -->
-                <div class="table-row">
-                    <div class="col-thumb">
-                        <div class="thumb-box"></div>
-                    </div>
-                    <div class="col-name">
-                        <input type="text" placeholder="Tên chi tiết" spellcheck="false">
-                    </div>
-                    <div class="col-width">40.2</div>
-                    <div class="col-height">24.7</div>
-                    <div class="col-action">
-                        <button class="btn-icon">
-                            <img src="./assets/delete.svg" alt="Delete" width="14" height="14" />
-                        </button>
-                    </div>
-                </div>
-                <!-- Row 3 -->
-                <div class="table-row">
-                    <div class="col-thumb">
-                        <div class="thumb-box"></div>
-                    </div>
-                    <div class="col-name">
-                        <input type="text" placeholder="Tên chi tiết" spellcheck="false">
-                    </div>
-                    <div class="col-width">40.2</div>
-                    <div class="col-height">24.7</div>
-                    <div class="col-action">
-                        <button class="btn-icon">
-                            <img src="./assets/delete.svg" alt="Delete" width="14" height="14" />
-                        </button>
-                    </div>
-                </div>
-                <!-- Row 4 -->
-                <div class="table-row">
-                    <div class="col-thumb">
-                        <div class="thumb-box"></div>
-                    </div>
-                    <div class="col-name">
-                        <input type="text" placeholder="Tên chi tiết" spellcheck="false">
-                    </div>
-                    <div class="col-width">40.2</div>
-                    <div class="col-height">24.7</div>
-                    <div class="col-action">
-                        <button class="btn-icon">
-                            <img src="./assets/delete.svg" alt="Delete" width="14" height="14" />
+                        <button class="btn btn-danger">
+                            <img src="./assets/delete.svg" alt="Delete" width="16" height="16" />
+                            Xóa tất cả các mẫu
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <div id="view-nhay-size" class="tab-view" style="display: none;">
+                <div class="size-management nhay-size-wrapper">
+                    <div class="size-header">
+                        <img src="./assets/manage.svg" alt="Manage" width="16" height="16" />
+                        Dãy size cần tạo
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" class="size-input" placeholder="M,L,XL,2XL,3XL" spellcheck="false">
+                        <div class="input-helper">Nhập dãy size; danh sách Size thiết kế chuẩn được tạo tự động.</div>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="custom-dropdown" onclick="toggleDropdown(this)">
+                            <div class="dropdown-selected">M</div>
+                            <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none"
+                                stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                            <div class="dropdown-options">
+                                <div class="dropdown-option" onclick="selectOption(event, this)">S</div>
+                                <div class="dropdown-option" onclick="selectOption(event, this)">M</div>
+                                <div class="dropdown-option" onclick="selectOption(event, this)">L</div>
+                                <div class="dropdown-option" onclick="selectOption(event, this)">XL</div>
+                                <div class="dropdown-option" onclick="selectOption(event, this)">2XL</div>
+                                <div class="dropdown-option" onclick="selectOption(event, this)">3XL</div>
+                            </div>
+                        </div>
+                        <div class="input-helper">Nhập dãy size; danh sách Size thiết kế chuẩn được tạo tự động.</div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="btn btn-primary">
+                            <img src="./assets/check.svg" alt="Check" width="16" height="16" />
+                            Lấy mẫu rập đang chọn
+                        </button>
+                        <button class="btn btn-danger">
+                            <img src="./assets/delete.svg" alt="Delete" width="16" height="16" />
+                            Xóa nguồn nhảy size
+                        </button>
+                    </div>
+
+                    <div class="table-container nhay-size-table">
+                        <div class="table-header">
+                            <div class="col-thumb">Hình</div>
+                            <div class="col-name">Tên mẫu</div>
+                            <div class="col-anchor">Điểm neo</div>
+                            <div class="col-action">Xóa</div>
+                        </div>
+                        <div class="table-body">
+                            <div class="table-row">
+                                <div class="col-thumb">
+                                    <div class="thumb-box"></div>
+                                </div>
+                                <div class="col-name"><input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                                </div>
+                                <div class="col-anchor"><button class="anchor-btn"
+                                        onclick="openModal('diem-neo-modal')">Giữa • Giữa</button></div>
+                                <div class="col-action">
+                                    <button class="btn-icon"><img src="./assets/delete.svg" alt="Delete" width="14"
+                                            height="14" /></button>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-thumb">
+                                    <div class="thumb-box"></div>
+                                </div>
+                                <div class="col-name"><input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                                </div>
+                                <div class="col-anchor"><button class="anchor-btn"
+                                        onclick="openModal('diem-neo-modal')">Giữa • Giữa</button></div>
+                                <div class="col-action">
+                                    <button class="btn-icon"><img src="./assets/delete.svg" alt="Delete" width="14"
+                                            height="14" /></button>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-thumb">
+                                    <div class="thumb-box"></div>
+                                </div>
+                                <div class="col-name"><input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                                </div>
+                                <div class="col-anchor"><button class="anchor-btn"
+                                        onclick="openModal('diem-neo-modal')">Giữa • Giữa</button></div>
+                                <div class="col-action">
+                                    <button class="btn-icon"><img src="./assets/delete.svg" alt="Delete" width="14"
+                                            height="14" /></button>
+                                </div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-thumb">
+                                    <div class="thumb-box"></div>
+                                </div>
+                                <div class="col-name"><input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                                </div>
+                                <div class="col-anchor"><button class="anchor-btn"
+                                        onclick="openModal('diem-neo-modal')">Giữa • Giữa</button></div>
+                                <div class="col-action">
+                                    <button class="btn-icon"><img src="./assets/delete.svg" alt="Delete" width="14"
+                                            height="14" /></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bottom-actions">
+                        <button class="btn btn-secondary">
+                            <img src="./assets/file.svg" alt="Folder" width="16" height="16" />
+                            Kiểm tra nhận size từ DXF
+                        </button>
+                        <button class="btn btn-primary">
+                            <img src="./assets/check.svg" alt="Check" width="16" height="16" />
+                            Áp dụng kiểm tra vào Illustrator
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container" id="shared-table">
+                <div class="table-header">
+                    <div class="col-thumb">Hình</div>
+                    <div class="col-name">Tên mẫu</div>
+                    <div class="col-width">Rộng</div>
+                    <div class="col-height">Cao</div>
+                    <div class="col-action">Xóa</div>
+                </div>
+                <div class="table-body">
+                    <div class="table-row">
+                        <div class="col-thumb">
+                            <div class="thumb-box"></div>
+                        </div>
+                        <div class="col-name">
+                            <input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                        </div>
+                        <div class="col-width">40.2</div>
+                        <div class="col-height">24.7</div>
+                        <div class="col-action">
+                            <button class="btn-icon">
+                                <img src="./assets/delete.svg" alt="Delete" width="14" height="14" />
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="col-thumb">
+                            <div class="thumb-box"></div>
+                        </div>
+                        <div class="col-name">
+                            <input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                        </div>
+                        <div class="col-width">40.2</div>
+                        <div class="col-height">24.7</div>
+                        <div class="col-action">
+                            <button class="btn-icon">
+                                <img src="./assets/delete.svg" alt="Delete" width="14" height="14" />
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="col-thumb">
+                            <div class="thumb-box"></div>
+                        </div>
+                        <div class="col-name">
+                            <input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                        </div>
+                        <div class="col-width">40.2</div>
+                        <div class="col-height">24.7</div>
+                        <div class="col-action">
+                            <button class="btn-icon">
+                                <img src="./assets/delete.svg" alt="Delete" width="14" height="14" />
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="col-thumb">
+                            <div class="thumb-box"></div>
+                        </div>
+                        <div class="col-name">
+                            <input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                        </div>
+                        <div class="col-width">40.2</div>
+                        <div class="col-height">24.7</div>
+                        <div class="col-action">
+                            <button class="btn-icon">
+                                <img src="./assets/delete.svg" alt="Delete" width="14" height="14" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
-        <!-- End of Main View: Mẫu rập -->
 
-        <!-- Main View: Sơ đồ -->
-        <div id="main-view-so-do" class="main-view" style="display: none; padding: 16px; gap: 12px; background-color: var(--bg-panel); overflow-y: auto;">
+        <div id="main-view-so-do" class="main-view"
+            style="display: none; padding: 16px; gap: 12px; background-color: var(--bg-panel); overflow-y: auto;">
             <div style="display: flex; gap: 12px; width: 100%;">
                 <button class="btn btn-primary" style="flex: 1;" onclick="openModal('tao-sodo-modal')">
                     <img src="./assets/create.svg" alt="Plus" width="16" height="16" />
@@ -310,36 +304,36 @@
                     Sơ đồ ngoài
                 </button>
             </div>
-            
+
             <button class="btn btn-primary">
                 <img src="./assets/check.svg" alt="Check" width="16" height="16" />
                 Áp dụng sơ đồ
             </button>
-            
+
             <button class="btn btn-danger">
                 <img src="./assets/delete.svg" alt="Delete" width="16" height="16" />
                 Xóa khung cũ
             </button>
-            
+
             <button class="btn btn-secondary" onclick="openModal('xuat-tiff-modal')">
                 <img src="./assets/export.svg" alt="Export" width="16" height="16" />
                 Xuất TIFF
             </button>
-            
+
             <button class="btn btn-secondary" onclick="openModal('kich-ban-modal')">
                 <img src="./assets/play.svg" alt="Auto" width="16" height="16" />
                 Kịch bản tự động
             </button>
-            
+
             <div class="sodo-settings">
-                <!-- Row 1 -->
                 <label class="sodo-checkbox">
                     <input type="checkbox">
                     Tạo viền
                 </label>
                 <div class="custom-dropdown" onclick="toggleDropdown(this)">
                     <div class="dropdown-selected">0.1 cm</div>
-                    <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                     <div class="dropdown-options">
@@ -352,15 +346,15 @@
                     <input type="checkbox">
                     Cách trắng
                 </label>
-                
-                <!-- Row 2 -->
+
                 <label class="sodo-checkbox">
                     <input type="checkbox">
                     Tên chi tiết
                 </label>
                 <div class="custom-dropdown" onclick="toggleDropdown(this)">
                     <div class="dropdown-selected">0.4</div>
-                    <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                     <div class="dropdown-options">
@@ -371,7 +365,8 @@
                 </div>
                 <div class="custom-dropdown" onclick="toggleDropdown(this)">
                     <div class="dropdown-selected">Đen</div>
-                    <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                     <div class="dropdown-options">
@@ -381,7 +376,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="sodo-preview">
                 <div class="sodo-preview-title">Preview</div>
                 <div class="sodo-preview-box">
@@ -391,7 +386,6 @@
             </div>
         </div>
 
-        <!-- Footer -->
         <footer class="footer">
             <a href="#" class="license-link" onclick="openModal('license-modal'); return false;">
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
@@ -404,20 +398,20 @@
         </footer>
     </div>
 
-    <!-- Modals -->
     <div id="tao-sodo-modal" class="modal-overlay">
         <div class="modal-container">
             <div class="modal-header">
                 <img src="./assets/create.svg" alt="Create" width="16" height="16" />
                 <span>Tạo sơ đồ</span>
                 <button class="btn-close-modal" onclick="closeModal('tao-sodo-modal')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="18" y1="6" x2="6" y2="18"></line>
                         <line x1="6" y1="6" x2="18" y2="18"></line>
                     </svg>
                 </button>
             </div>
-            
+
             <div class="modal-body">
                 <div class="form-group">
                     <label>Khổ tạo sơ đồ</label>
@@ -426,7 +420,7 @@
                         <span class="unit">cm</span>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label>Khoảng cách an toàn</label>
                     <div class="input-with-unit">
@@ -434,18 +428,19 @@
                         <span class="unit">cm</span>
                     </div>
                 </div>
-                
+
                 <div class="sl-sodo-section">
                     <div class="sl-header">
                         <img src="./assets/magic.svg" width="14" height="14" />
                         Số lượng tạo sơ đồ
                     </div>
-                    
+
                     <div class="info-alert">
                         <img src="./assets/info.svg" width="14" height="14" style="margin-top: 2px;" />
-                        <span>Dùng cho nguồn theo bộ / nhóm và nhảy size. Số lượng được chọn tại đây trước khi tạo sơ đồ</span>
+                        <span>Dùng cho nguồn theo bộ / nhóm và nhảy size. Số lượng được chọn tại đây trước khi tạo sơ
+                            đồ</span>
                     </div>
-                    
+
                     <div class="sl-table">
                         <div class="sl-thead">
                             <div>Size</div>
@@ -471,12 +466,13 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label>Chiều xoay khi tạo sơ đồ</label>
                     <div class="custom-dropdown" onclick="toggleDropdown(this)">
                         <div class="dropdown-selected">Không xoay (0°)</div>
-                        <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                         <div class="dropdown-options">
@@ -485,12 +481,14 @@
                             <div class="dropdown-option" onclick="selectOption(event, this)">Xoay 180°</div>
                         </div>
                     </div>
-                    <div class="helper-text">Đang chọn: Không xoay (0°). Áp dụng cho toàn bộ chi tiết khi chạy Sparrow.</div>
+                    <div class="helper-text">Đang chọn: Không xoay (0°). Áp dụng cho toàn bộ chi tiết khi chạy Sparrow.
+                    </div>
                 </div>
             </div>
-            
+
             <div class="modal-footer">
-                <button class="btn btn-primary" style="width: 100%;" onclick="closeModal('tao-sodo-modal')">Tạo sơ đồ</button>
+                <button class="btn btn-primary" style="width: 100%;" onclick="closeModal('tao-sodo-modal')">Tạo sơ
+                    đồ</button>
             </div>
         </div>
     </div>
@@ -503,19 +501,21 @@
                     <span>Xuất Tiff</span>
                 </div>
                 <button class="btn-close-modal" onclick="closeModal('xuat-tiff-modal')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="18" y1="6" x2="6" y2="18"></line>
                         <line x1="6" y1="6" x2="18" y2="18"></line>
                     </svg>
                 </button>
             </div>
-            
+
             <div class="modal-body" style="padding-bottom: 24px;">
                 <div class="form-group">
                     <label>Độ phân giải</label>
                     <div class="custom-dropdown" onclick="toggleDropdown(this)">
                         <div class="dropdown-selected">300 DPI</div>
-                        <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                         <div class="dropdown-options">
@@ -525,12 +525,13 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label>Hệ màu</label>
                     <div class="custom-dropdown" onclick="toggleDropdown(this)">
                         <div class="dropdown-selected">RGB TIFF (ổn định)</div>
-                        <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                         <div class="dropdown-options">
@@ -540,16 +541,17 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <label class="sodo-checkbox" style="margin-top: 8px;">
                     <input type="checkbox" checked>
                     Nén LZW
                 </label>
             </div>
-            
+
             <div class="modal-footer" style="padding-top: 0;">
                 <button class="btn btn-primary" style="width: 100%;" onclick="closeModal('xuat-tiff-modal')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="17 8 12 3 7 8"></polyline>
                         <line x1="12" y1="3" x2="12" y2="15"></line>
@@ -568,19 +570,21 @@
                     <span>Kịch bản tự động</span>
                 </div>
                 <button class="btn-close-modal" onclick="closeModal('kich-ban-modal')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="18" y1="6" x2="6" y2="18"></line>
                         <line x1="6" y1="6" x2="18" y2="18"></line>
                     </svg>
                 </button>
             </div>
-            
+
             <div class="modal-body" style="padding-bottom: 16px;">
                 <div class="form-group">
                     <label>Chọn kịch bản</label>
                     <div class="custom-dropdown" onclick="toggleDropdown(this)">
                         <div class="dropdown-selected">Chưa cấu hình</div>
-                        <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                         <div class="dropdown-options">
@@ -589,9 +593,10 @@
                         </div>
                     </div>
                 </div>
-                
-                <button class="btn btn-primary" style="width: 100%;" onclick="closeModal('kich-ban-modal')">Chọn kịch bản tự động</button>
-                
+
+                <button class="btn btn-primary" style="width: 100%;" onclick="closeModal('kich-ban-modal')">Chọn kịch
+                    bản tự động</button>
+
                 <div class="warning-alert">
                     <img src="./assets/info2.svg" width="14" height="14" style="margin-top: 2px;" />
                     <span>Chưa chọn kịch bản. Phần số lượng size sẽ được cấu hình theo yêu cầu ở bước sau.</span>
@@ -605,34 +610,44 @@
             <div class="modal-header">
                 <span>Điểm neo: Chi tiết 01</span>
                 <button class="btn-close-modal" onclick="closeModal('diem-neo-modal')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="18" y1="6" x2="6" y2="18"></line>
                         <line x1="6" y1="6" x2="18" y2="18"></line>
                     </svg>
                 </button>
             </div>
-            
+
             <div class="modal-body" style="padding-bottom: 24px;">
                 <div class="anchor-grid">
-                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg" width="14" height="14"></button>
-                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg" width="14" height="14"></button>
-                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg" width="14" height="14"></button>
-                    
-                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg" width="14" height="14"></button>
-                    <button class="anchor-grid-btn active" onclick="setActiveAnchor(this)"><img src="./assets/focus.svg" width="16" height="16"></button>
-                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg" width="14" height="14"></button>
-                    
-                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg" width="14" height="14"></button>
-                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg" width="14" height="14"></button>
-                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg" width="14" height="14"></button>
+                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg"
+                            width="14" height="14"></button>
+                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg"
+                            width="14" height="14"></button>
+                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg"
+                            width="14" height="14"></button>
+
+                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg"
+                            width="14" height="14"></button>
+                    <button class="anchor-grid-btn active" onclick="setActiveAnchor(this)"><img src="./assets/focus.svg"
+                            width="16" height="16"></button>
+                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg"
+                            width="14" height="14"></button>
+
+                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg"
+                            width="14" height="14"></button>
+                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg"
+                            width="14" height="14"></button>
+                    <button class="anchor-grid-btn" onclick="setActiveAnchor(this)"><img src="./assets/circle.svg"
+                            width="14" height="14"></button>
                 </div>
-                
+
                 <label class="sodo-checkbox" style="width: 100%; justify-content: flex-start; margin-bottom: 8px;">
                     <input type="checkbox" checked>
                     Tự động Zoom hình theo tỷ lệ rập
                 </label>
             </div>
-            
+
             <div class="modal-footer" style="padding-top: 0;">
                 <button class="btn btn-primary" style="width: 100%;" onclick="closeModal('diem-neo-modal')">
                     <img src="./assets/save.svg" width="14" height="14" style="margin-right: 4px;" />
@@ -646,20 +661,22 @@
         <div class="modal-container" style="width: 320px;">
             <div class="modal-header">
                 <div style="display: flex; align-items: center; gap: 8px;">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="8" r="7"></circle>
                         <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
                     </svg>
                     <span>License</span>
                 </div>
                 <button class="btn-close-modal" onclick="closeModal('license-modal')">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="18" y1="6" x2="6" y2="18"></line>
                         <line x1="6" y1="6" x2="18" y2="18"></line>
                     </svg>
                 </button>
             </div>
-            
+
             <div class="modal-body" style="padding-bottom: 16px;">
                 <div class="form-group">
                     <label>License Key</label>
@@ -668,9 +685,10 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="modal-footer" style="display: flex; gap: 8px; padding-top: 0;">
-                <button class="btn license-btn" style="flex: 1;" onclick="closeModal('license-modal')">Kích hoạt</button>
+                <button class="btn license-btn" style="flex: 1;" onclick="closeModal('license-modal')">Kích
+                    hoạt</button>
                 <button class="btn license-btn" style="flex: 1;" onclick="closeModal('license-modal')">Kiểm tra</button>
                 <button class="btn license-btn" style="flex: 1;" onclick="closeModal('license-modal')">Xóa key</button>
             </div>
@@ -680,7 +698,6 @@
         function switchMainTab(targetId, btnElement) {
             document.querySelectorAll('.main-tab').forEach(el => el.classList.remove('active'));
             btnElement.classList.add('active');
-
             document.querySelectorAll('.main-view').forEach(el => el.style.display = 'none');
             const targetView = document.getElementById('main-view-' + targetId);
             if (targetView) {
@@ -691,7 +708,6 @@
         function switchTab(targetId, btnElement) {
             document.querySelectorAll('.sub-tab').forEach(el => el.classList.remove('active'));
             btnElement.classList.add('active');
-
             document.querySelectorAll('.tab-view').forEach(el => el.style.display = 'none');
             const targetView = document.getElementById('view-' + targetId);
             if (targetView) {
@@ -720,13 +736,13 @@
             dropdown.classList.remove('open');
         }
 
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             if (!event.target.closest('.custom-dropdown')) {
                 document.querySelectorAll('.custom-dropdown').forEach(el => el.classList.remove('open'));
             }
         });
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
+
+        window.addEventListener('click', function (event) {
             if (event.target.classList.contains('modal-overlay')) {
                 event.target.style.display = 'none';
             }
