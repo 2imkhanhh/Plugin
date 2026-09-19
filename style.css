@@ -944,3 +944,33 @@ textarea {
 .modal-footer {
     padding: 16px;
 }
+
+/* Anchor Grid */
+.anchor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 48px);
+    gap: 8px;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+.anchor-grid-btn {
+    width: 48px;
+    height: 48px;
+    background-color: #06090F;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.anchor-grid-btn:hover {
+    background-color: #0A0F18;
+}
+
+.anchor-grid-btn.active {
+    background-color: #20314D;
+}
