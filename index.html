@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adobe Illustrator Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="panel-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-top">
+                <div class="header-title">
+                    <span class="brand">NES - PRINTX</span>
+                    <span class="badge">
+                        <svg viewBox="0 0 8 8" width="6" height="6">
+                            <circle cx="4" cy="4" r="4" fill="currentColor" />
+                        </svg>
+                        Illustation ok
+                    </span>
+                </div>
+                <div class="header-lang">
+                    <div class="flag">
+                        <img src="./assets/vietnamflag.svg" alt="Vietnam Flag" width="14" height="14" />
+                    </div>
+                    <span>Tiếng việt</span>
+                    <svg class="caret" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+            </div>
+            <div class="header-divider"></div>
+        </header>
+
+        <!-- Main Tabs -->
+        <div class="main-tabs">
+            <div class="main-tab active">
+                <span class="tab-content">
+                    <i class="icon icon-pattern"></i>
+                    Mẫu rập
+                </span>
+            </div>
+            <div class="main-tab">
+                <span class="tab-content">
+                    <i class="icon icon-diagram"></i>
+                    Sơ đồ
+                </span>
+            </div>
+        </div>
+
+        <!-- Sub Tabs -->
+        <div class="sub-tabs">
+            <button class="sub-tab active" onclick="switchTab('manh-roi', this)">Mảnh rời</button>
+            <button class="sub-tab" onclick="switchTab('theo-bo', this)">Theo bộ / nhóm</button>
+            <button class="sub-tab" onclick="switchTab('nhay-size', this)">Nhảy size</button>
+        </div>
+
+        <!-- Views -->
+        <div id="view-manh-roi" class="tab-view active">
+            <!-- Actions -->
+            <div class="actions">
+                <button class="btn btn-primary">
+                    <img src="./assets/check.svg" alt="Check" width="16" height="16" />
+                    Lấy mẫu rập đang chọn
+                </button>
+                <button class="btn btn-danger">
+                    <img src="./assets/delete.svg" alt="Delete" width="16" height="16" />
+                    Xóa tất cả các mẫu
+                </button>
+            </div>
+        </div>
+
+        <div id="view-theo-bo" class="tab-view" style="display: none;">
+            <div class="size-management">
+                <div class="size-header">
+                    <img src="./assets/manage.svg" alt="Manage" width="16" height="16" />
+                    Quản lý size
+                </div>
+                <div class="size-input-row">
+                    <input type="text" class="size-input" placeholder="Nhập size mới, VD: XL" spellcheck="false">
+                    <button class="btn-add">Thêm</button>
+                </div>
+                <div class="size-tags-row">
+                    <div class="size-tag active">XXL</div>
+                    <div class="size-tag">4XL</div>
+                    <div class="size-tag">4XL</div>
+                    <div class="size-tag">4XL</div>
+                    <a href="#" class="delete-size-link">Xóa size</a>
+                </div>
+                <div class="actions">
+                    <button class="btn btn-primary">
+                        <img src="./assets/check.svg" alt="Check" width="16" height="16" />
+                        Lấy mẫu rập đang chọn
+                    </button>
+                    <button class="btn btn-danger">
+                        <img src="./assets/delete.svg" alt="Delete" width="16" height="16" />
+                        Xóa tất cả các mẫu
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-nhay-size" class="tab-view" style="display: none;">
+            <div class="size-management nhay-size-wrapper">
+                <div class="size-header">
+                    <img src="./assets/manage.svg" alt="Manage" width="16" height="16" />
+                    Dãy size cần tạo
+                </div>
+
+                <div class="input-group">
+                    <input type="text" class="size-input" value="M,L,XL,2XL,3XL" spellcheck="false">
+                    <div class="input-helper">Nhập dãy size; danh sách Size thiết kế chuẩn được tạo tự động.</div>
+                </div>
+
+                <div class="input-group">
+                    <div class="custom-select-wrapper">
+                        <select class="size-input">
+                            <option>M</option>
+                        </select>
+                        <svg class="select-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="input-helper">Nhập dãy size; danh sách Size thiết kế chuẩn được tạo tự động.</div>
+                </div>
+
+                <div class="actions">
+                    <button class="btn btn-primary">
+                        <img src="./assets/check.svg" alt="Check" width="16" height="16" />
+                        Lấy mẫu rập đang chọn
+                    </button>
+                    <button class="btn btn-danger">
+                        <img src="./assets/delete.svg" alt="Delete" width="16" height="16" />
+                        Xóa nguồn nhảy size
+                    </button>
+                </div>
+
+                <div class="table-container nhay-size-table">
+                    <div class="table-header">
+                        <div class="col-thumb">Hình</div>
+                        <div class="col-name">Tên mẫu</div>
+                        <div class="col-anchor">Điểm neo</div>
+                        <div class="col-action">Xóa</div>
+                    </div>
+                    <div class="table-body">
+                        <!-- Row 1 -->
+                        <div class="table-row">
+                            <div class="col-thumb">
+                                <div class="thumb-box"></div>
+                            </div>
+                            <div class="col-name"><input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                            </div>
+                            <div class="col-anchor"><button class="anchor-btn">Giữa • Giữa</button></div>
+                            <div class="col-action">
+                                <button class="btn-icon"><img src="./assets/delete.svg" alt="Delete" width="14"
+                                        height="14" /></button>
+                            </div>
+                        </div>
+                        <!-- Row 2 -->
+                        <div class="table-row">
+                            <div class="col-thumb">
+                                <div class="thumb-box"></div>
+                            </div>
+                            <div class="col-name"><input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                            </div>
+                            <div class="col-anchor"><button class="anchor-btn">Giữa • Giữa</button></div>
+                            <div class="col-action">
+                                <button class="btn-icon"><img src="./assets/delete.svg" alt="Delete" width="14"
+                                        height="14" /></button>
+                            </div>
+                        </div>
+                        <!-- Row 3 -->
+                        <div class="table-row">
+                            <div class="col-thumb">
+                                <div class="thumb-box"></div>
+                            </div>
+                            <div class="col-name"><input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                            </div>
+                            <div class="col-anchor"><button class="anchor-btn">Giữa • Giữa</button></div>
+                            <div class="col-action">
+                                <button class="btn-icon"><img src="./assets/delete.svg" alt="Delete" width="14"
+                                        height="14" /></button>
+                            </div>
+                        </div>
+                        <!-- Row 4 -->
+                        <div class="table-row">
+                            <div class="col-thumb">
+                                <div class="thumb-box"></div>
+                            </div>
+                            <div class="col-name"><input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                            </div>
+                            <div class="col-anchor"><button class="anchor-btn">Giữa • Giữa</button></div>
+                            <div class="col-action">
+                                <button class="btn-icon"><img src="./assets/delete.svg" alt="Delete" width="14"
+                                        height="14" /></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-actions">
+                    <button class="btn btn-secondary">
+                        <img src="./assets/file.svg" alt="Folder" width="16" height="16" />
+                        Kiểm tra nhận size từ DXF
+                    </button>
+                    <button class="btn btn-primary">
+                        <img src="./assets/check.svg" alt="Check" width="16" height="16" />
+                        Áp dụng kiểm tra vào Illustrator
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table container -->
+        <div class="table-container" id="shared-table">
+            <div class="table-header">
+                <div class="col-thumb">Hình</div>
+                <div class="col-name">Tên mẫu</div>
+                <div class="col-width">Rộng</div>
+                <div class="col-height">Cao</div>
+                <div class="col-action">Xóa</div>
+            </div>
+            <div class="table-body">
+                <!-- Row 1 -->
+                <div class="table-row">
+                    <div class="col-thumb">
+                        <div class="thumb-box"></div>
+                    </div>
+                    <div class="col-name">
+                        <input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                    </div>
+                    <div class="col-width">40.2</div>
+                    <div class="col-height">24.7</div>
+                    <div class="col-action">
+                        <button class="btn-icon">
+                            <img src="./assets/delete.svg" alt="Delete" width="14" height="14" />
+                        </button>
+                    </div>
+                </div>
+                <!-- Row 2 -->
+                <div class="table-row">
+                    <div class="col-thumb">
+                        <div class="thumb-box"></div>
+                    </div>
+                    <div class="col-name">
+                        <input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                    </div>
+                    <div class="col-width">40.2</div>
+                    <div class="col-height">24.7</div>
+                    <div class="col-action">
+                        <button class="btn-icon">
+                            <img src="./assets/delete.svg" alt="Delete" width="14" height="14" />
+                        </button>
+                    </div>
+                </div>
+                <!-- Row 3 -->
+                <div class="table-row">
+                    <div class="col-thumb">
+                        <div class="thumb-box"></div>
+                    </div>
+                    <div class="col-name">
+                        <input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                    </div>
+                    <div class="col-width">40.2</div>
+                    <div class="col-height">24.7</div>
+                    <div class="col-action">
+                        <button class="btn-icon">
+                            <img src="./assets/delete.svg" alt="Delete" width="14" height="14" />
+                        </button>
+                    </div>
+                </div>
+                <!-- Row 4 -->
+                <div class="table-row">
+                    <div class="col-thumb">
+                        <div class="thumb-box"></div>
+                    </div>
+                    <div class="col-name">
+                        <input type="text" placeholder="Tên chi tiết" spellcheck="false">
+                    </div>
+                    <div class="col-width">40.2</div>
+                    <div class="col-height">24.7</div>
+                    <div class="col-action">
+                        <button class="btn-icon">
+                            <img src="./assets/delete.svg" alt="Delete" width="14" height="14" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="#" class="license-link">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="7"></circle>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                </svg>
+                License
+            </a>
+        </footer>
+    </div>
+    <script>
+        function switchTab(targetId, btnElement) {
+            document.querySelectorAll('.sub-tab').forEach(el => el.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            document.querySelectorAll('.tab-view').forEach(el => el.style.display = 'none');
+            const targetView = document.getElementById('view-' + targetId);
+            if (targetView) {
+                targetView.style.display = 'flex';
+            }
+
+            const sharedTable = document.getElementById('shared-table');
+            if (targetId === 'nhay-size') {
+                sharedTable.style.display = 'none';
+            } else {
+                sharedTable.style.display = 'flex';
+            }
+        }
+    </script>
+</body>
+
+</html>
