@@ -301,7 +301,7 @@
         <!-- Main View: Sơ đồ -->
         <div id="main-view-so-do" class="main-view" style="display: none; padding: 16px; gap: 12px; background-color: var(--bg-panel); overflow-y: auto;">
             <div style="display: flex; gap: 12px; width: 100%;">
-                <button class="btn btn-primary" style="flex: 1;">
+                <button class="btn btn-primary" style="flex: 1;" onclick="openModal('tao-sodo-modal')">
                     <img src="./assets/create.svg" alt="Plus" width="16" height="16" />
                     Tạo sơ đồ
                 </button>
@@ -321,12 +321,12 @@
                 Xóa khung cũ
             </button>
             
-            <button class="btn btn-secondary">
-                <img src="./assets/tiff.svg" alt="Export" width="16" height="16" />
+            <button class="btn btn-secondary" onclick="openModal('xuat-tiff-modal')">
+                <img src="./assets/export.svg" alt="Export" width="16" height="16" />
                 Xuất TIFF
             </button>
             
-            <button class="btn btn-secondary">
+            <button class="btn btn-secondary" onclick="openModal('kich-ban-modal')">
                 <img src="./assets/play.svg" alt="Auto" width="16" height="16" />
                 Kịch bản tự động
             </button>
@@ -403,6 +403,202 @@
             </a>
         </footer>
     </div>
+
+    <!-- Modals -->
+    <div id="tao-sodo-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <img src="./assets/create.svg" alt="Create" width="16" height="16" />
+                <span>Tạo sơ đồ</span>
+                <button class="btn-close-modal" onclick="closeModal('tao-sodo-modal')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Khổ tạo sơ đồ</label>
+                    <div class="input-with-unit">
+                        <input type="text" value="110" spellcheck="false">
+                        <span class="unit">cm</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Khoảng cách an toàn</label>
+                    <div class="input-with-unit">
+                        <input type="text" value="0.4" spellcheck="false">
+                        <span class="unit">cm</span>
+                    </div>
+                </div>
+                
+                <div class="sl-sodo-section">
+                    <div class="sl-header">
+                        <img src="./assets/magic.svg" width="14" height="14" />
+                        Số lượng tạo sơ đồ
+                    </div>
+                    
+                    <div class="info-alert">
+                        <img src="./assets/info.svg" width="14" height="14" style="margin-top: 2px;" />
+                        <span>Dùng cho nguồn theo bộ / nhóm và nhảy size. Số lượng được chọn tại đây trước khi tạo sơ đồ</span>
+                    </div>
+                    
+                    <div class="sl-table">
+                        <div class="sl-thead">
+                            <div>Size</div>
+                            <div>Tên mẫu</div>
+                            <div>Nhanh</div>
+                        </div>
+                        <div class="sl-tbody">
+                            <div class="sl-row">
+                                <div class="sl-col-size">XL</div>
+                                <div class="sl-col-name"><input type="text" value="0" spellcheck="false"></div>
+                                <div class="sl-col-action"><button class="btn-dat-bo">Đặt 1 bộ</button></div>
+                            </div>
+                            <div class="sl-row">
+                                <div class="sl-col-size">XL</div>
+                                <div class="sl-col-name"><input type="text" value="0" spellcheck="false"></div>
+                                <div class="sl-col-action"><button class="btn-dat-bo">Đặt 1 bộ</button></div>
+                            </div>
+                            <div class="sl-row">
+                                <div class="sl-col-size">XL</div>
+                                <div class="sl-col-name"><input type="text" value="0" spellcheck="false"></div>
+                                <div class="sl-col-action"><button class="btn-dat-bo">Đặt 1 bộ</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Chiều xoay khi tạo sơ đồ</label>
+                    <div class="custom-dropdown" onclick="toggleDropdown(this)">
+                        <div class="dropdown-selected">Không xoay (0°)</div>
+                        <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        <div class="dropdown-options">
+                            <div class="dropdown-option" onclick="selectOption(event, this)">Không xoay (0°)</div>
+                            <div class="dropdown-option" onclick="selectOption(event, this)">Xoay 90°</div>
+                            <div class="dropdown-option" onclick="selectOption(event, this)">Xoay 180°</div>
+                        </div>
+                    </div>
+                    <div class="helper-text">Đang chọn: Không xoay (0°). Áp dụng cho toàn bộ chi tiết khi chạy Sparrow.</div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn btn-primary" style="width: 100%;" onclick="closeModal('tao-sodo-modal')">Tạo sơ đồ</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="xuat-tiff-modal" class="modal-overlay">
+        <div class="modal-container" style="width: 320px;">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <img src="./assets/export.svg" alt="Export" width="16" height="16" />
+                    <span>Xuất Tiff</span>
+                </div>
+                <button class="btn-close-modal" onclick="closeModal('xuat-tiff-modal')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="modal-body" style="padding-bottom: 24px;">
+                <div class="form-group">
+                    <label>Độ phân giải</label>
+                    <div class="custom-dropdown" onclick="toggleDropdown(this)">
+                        <div class="dropdown-selected">300 DPI</div>
+                        <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        <div class="dropdown-options">
+                            <div class="dropdown-option" onclick="selectOption(event, this)">150 DPI</div>
+                            <div class="dropdown-option" onclick="selectOption(event, this)">300 DPI</div>
+                            <div class="dropdown-option" onclick="selectOption(event, this)">600 DPI</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Hệ màu</label>
+                    <div class="custom-dropdown" onclick="toggleDropdown(this)">
+                        <div class="dropdown-selected">RGB TIFF (ổn định)</div>
+                        <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        <div class="dropdown-options">
+                            <div class="dropdown-option" onclick="selectOption(event, this)">RGB TIFF (ổn định)</div>
+                            <div class="dropdown-option" onclick="selectOption(event, this)">CMYK TIFF</div>
+                            <div class="dropdown-option" onclick="selectOption(event, this)">Grayscale TIFF</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <label class="sodo-checkbox" style="margin-top: 8px;">
+                    <input type="checkbox" checked>
+                    Nén LZW
+                </label>
+            </div>
+            
+            <div class="modal-footer" style="padding-top: 0;">
+                <button class="btn btn-primary" style="width: 100%;" onclick="closeModal('xuat-tiff-modal')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <span style="margin-left: 4px;">Xuất TIFF từ sơ đồ đã ghép</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="kich-ban-modal" class="modal-overlay">
+        <div class="modal-container" style="width: 320px;">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <img src="./assets/play.svg" alt="Play" width="16" height="16" />
+                    <span>Kịch bản tự động</span>
+                </div>
+                <button class="btn-close-modal" onclick="closeModal('kich-ban-modal')">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="modal-body" style="padding-bottom: 16px;">
+                <div class="form-group">
+                    <label>Chọn kịch bản</label>
+                    <div class="custom-dropdown" onclick="toggleDropdown(this)">
+                        <div class="dropdown-selected">Chưa cấu hình</div>
+                        <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        <div class="dropdown-options">
+                            <div class="dropdown-option" onclick="selectOption(event, this)">Chưa cấu hình</div>
+                            <div class="dropdown-option" onclick="selectOption(event, this)">Kịch bản 1</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" style="width: 100%;" onclick="closeModal('kich-ban-modal')">Chọn kịch bản tự động</button>
+                
+                <div class="warning-alert">
+                    <img src="./assets/info2.svg" width="14" height="14" style="margin-top: 2px;" />
+                    <span>Chưa chọn kịch bản. Phần số lượng size sẽ được cấu hình theo yêu cầu ở bước sau.</span>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         function switchMainTab(targetId, btnElement) {
             document.querySelectorAll('.main-tab').forEach(el => el.classList.remove('active'));
@@ -452,6 +648,20 @@
                 document.querySelectorAll('.custom-dropdown').forEach(el => el.classList.remove('open'));
             }
         });
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.style.display = 'none';
+            }
+        });
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
     </script>
 </body>
 
