@@ -38,13 +38,13 @@
 
         <!-- Main Tabs -->
         <div class="main-tabs">
-            <div class="main-tab active">
+            <div class="main-tab active" onclick="switchMainTab('mau-rap', this)">
                 <span class="tab-content">
                     <i class="icon icon-pattern"></i>
                     Mẫu rập
                 </span>
             </div>
-            <div class="main-tab">
+            <div class="main-tab" onclick="switchMainTab('so-do', this)">
                 <span class="tab-content">
                     <i class="icon icon-diagram"></i>
                     Sơ đồ
@@ -52,8 +52,10 @@
             </div>
         </div>
 
-        <!-- Sub Tabs -->
-        <div class="sub-tabs">
+        <!-- Main View: Mẫu rập -->
+        <div id="main-view-mau-rap" class="main-view active">
+            <!-- Sub Tabs -->
+            <div class="sub-tabs">
             <button class="sub-tab active" onclick="switchTab('manh-roi', this)">Mảnh rời</button>
             <button class="sub-tab" onclick="switchTab('theo-bo', this)">Theo bộ / nhóm</button>
             <button class="sub-tab" onclick="switchTab('nhay-size', this)">Nhảy size</button>
@@ -293,6 +295,102 @@
             </div>
         </div>
 
+        </div>
+        <!-- End of Main View: Mẫu rập -->
+
+        <!-- Main View: Sơ đồ -->
+        <div id="main-view-so-do" class="main-view" style="display: none; padding: 16px; gap: 12px; background-color: var(--bg-panel); overflow-y: auto;">
+            <div style="display: flex; gap: 12px; width: 100%;">
+                <button class="btn btn-primary" style="flex: 1;">
+                    <img src="./assets/create.svg" alt="Plus" width="16" height="16" />
+                    Tạo sơ đồ
+                </button>
+                <button class="btn btn-primary" style="flex: 1;">
+                    <img src="./assets/diagram2.svg" alt="Outer Marker" width="16" height="16" />
+                    Sơ đồ ngoài
+                </button>
+            </div>
+            
+            <button class="btn btn-primary">
+                <img src="./assets/check.svg" alt="Check" width="16" height="16" />
+                Áp dụng sơ đồ
+            </button>
+            
+            <button class="btn btn-danger">
+                <img src="./assets/delete.svg" alt="Delete" width="16" height="16" />
+                Xóa khung cũ
+            </button>
+            
+            <button class="btn btn-secondary">
+                <img src="./assets/tiff.svg" alt="Export" width="16" height="16" />
+                Xuất TIFF
+            </button>
+            
+            <button class="btn btn-secondary">
+                <img src="./assets/play.svg" alt="Auto" width="16" height="16" />
+                Kịch bản tự động
+            </button>
+            
+            <div class="sodo-settings">
+                <!-- Row 1 -->
+                <label class="sodo-checkbox">
+                    <input type="checkbox">
+                    Tạo viền
+                </label>
+                <div class="custom-dropdown" onclick="toggleDropdown(this)">
+                    <div class="dropdown-selected">0.1 cm</div>
+                    <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                    <div class="dropdown-options">
+                        <div class="dropdown-option" onclick="selectOption(event, this)">0.1 cm</div>
+                        <div class="dropdown-option" onclick="selectOption(event, this)">0.2 cm</div>
+                        <div class="dropdown-option" onclick="selectOption(event, this)">0.3 cm</div>
+                    </div>
+                </div>
+                <label class="sodo-checkbox" style="justify-content: flex-end;">
+                    <input type="checkbox">
+                    Cách trắng
+                </label>
+                
+                <!-- Row 2 -->
+                <label class="sodo-checkbox">
+                    <input type="checkbox">
+                    Tên chi tiết
+                </label>
+                <div class="custom-dropdown" onclick="toggleDropdown(this)">
+                    <div class="dropdown-selected">0.4</div>
+                    <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                    <div class="dropdown-options">
+                        <div class="dropdown-option" onclick="selectOption(event, this)">0.4</div>
+                        <div class="dropdown-option" onclick="selectOption(event, this)">0.5</div>
+                        <div class="dropdown-option" onclick="selectOption(event, this)">0.6</div>
+                    </div>
+                </div>
+                <div class="custom-dropdown" onclick="toggleDropdown(this)">
+                    <div class="dropdown-selected">Đen</div>
+                    <svg class="select-arrow" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                    <div class="dropdown-options">
+                        <div class="dropdown-option" onclick="selectOption(event, this)">Đen</div>
+                        <div class="dropdown-option" onclick="selectOption(event, this)">Trắng</div>
+                        <div class="dropdown-option" onclick="selectOption(event, this)">Đỏ</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sodo-preview">
+                <div class="sodo-preview-title">Preview</div>
+                <div class="sodo-preview-box">
+                    <img src="./assets/picture.svg" alt="Preview" width="24" height="24" style="opacity: 0.3;" />
+                    <span>Chưa có preview</span>
+                </div>
+            </div>
+        </div>
+
         <!-- Footer -->
         <footer class="footer">
             <a href="#" class="license-link">
@@ -306,6 +404,17 @@
         </footer>
     </div>
     <script>
+        function switchMainTab(targetId, btnElement) {
+            document.querySelectorAll('.main-tab').forEach(el => el.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            document.querySelectorAll('.main-view').forEach(el => el.style.display = 'none');
+            const targetView = document.getElementById('main-view-' + targetId);
+            if (targetView) {
+                targetView.style.display = 'flex';
+            }
+        }
+
         function switchTab(targetId, btnElement) {
             document.querySelectorAll('.sub-tab').forEach(el => el.classList.remove('active'));
             btnElement.classList.add('active');
@@ -323,6 +432,26 @@
                 sharedTable.style.display = 'flex';
             }
         }
+
+        function toggleDropdown(element) {
+            document.querySelectorAll('.custom-dropdown').forEach(el => {
+                if (el !== element) el.classList.remove('open');
+            });
+            element.classList.toggle('open');
+        }
+
+        function selectOption(event, optionElement) {
+            event.stopPropagation();
+            const dropdown = optionElement.closest('.custom-dropdown');
+            dropdown.querySelector('.dropdown-selected').innerText = optionElement.innerText;
+            dropdown.classList.remove('open');
+        }
+
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.custom-dropdown')) {
+                document.querySelectorAll('.custom-dropdown').forEach(el => el.classList.remove('open'));
+            }
+        });
     </script>
 </body>
 

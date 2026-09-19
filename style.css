@@ -176,6 +176,20 @@ textarea {
     mask-image: url('./assets/diagram.svg');
 }
 
+/* Main Views */
+.main-view {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.main-view.active {
+    display: flex;
+}
+
 /* Sub Tabs */
 .sub-tabs {
     display: flex;
@@ -445,6 +459,111 @@ textarea {
     padding: 0;
     background-color: transparent;
     margin-bottom: 8px;
+}
+
+/* Sơ đồ */
+.sodo-settings {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    gap: 12px 16px;
+    align-items: center;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.sodo-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.sodo-checkbox input[type="checkbox"] {
+    accent-color: var(--cyan);
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    background-color: #0B101D;
+    border: 1px solid #1B253B;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #fff;
+    user-select: none;
+    transition: border-color 0.2s;
+}
+
+.custom-dropdown:hover {
+    border-color: var(--cyan);
+}
+
+.dropdown-selected {
+    padding: 6px 24px 6px 10px;
+}
+
+.dropdown-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #0B101D;
+    border: 1px solid #102A4D;
+    border-radius: 4px;
+    margin-top: 4px;
+    z-index: 10;
+    box-sizing: border-box;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.custom-dropdown.open .dropdown-options {
+    display: block;
+}
+
+.dropdown-option {
+    padding: 6px 10px;
+    transition: background-color 0.2s;
+}
+
+.dropdown-option:hover {
+    background-color: #20314D;
+}
+
+.sodo-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-height: 150px;
+}
+
+.sodo-preview-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: #fff;
+}
+
+.sodo-preview-box {
+    flex: 1;
+    background-color: #0B101D;
+    border: 1px solid #102A4D;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
 }
 
 /* Table */
